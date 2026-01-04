@@ -17,8 +17,8 @@ define('PJ_CUSTOM_LOGIN_BRANDING_LOADED', true);
 add_action('login_enqueue_scripts', function() {
 
     // Update this URL to your actual logo
-    $logo_url = get_stylesheet_directory_uri() . '/images/pickle-juice-logo.png';
-
+    $logo_url = wp_get_attachment_url(320); // replace 320 with your media ID
+    
     echo '<style>
         body.login div#login h1 a {
             background-image: url(' . esc_url($logo_url) . ') !important;
