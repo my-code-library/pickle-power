@@ -82,7 +82,7 @@ class PJ_Settings_Page {
     public static function render_page() {
         ?>
         <div class="wrap">
-            <h1>Pickle Juice Settings</h1>
+            <h1></h1>
 
             <form method="post" action="options.php">
                 <?php
