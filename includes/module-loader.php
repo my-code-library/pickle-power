@@ -14,6 +14,7 @@ class PJ_Module_Loader {
 		// Add modules here
             'auth/email-only-login.php',
 			'trackers/analytics.php',
+			'ui/custom-login-branding.php',
         ];
 
         foreach ($modules as $module) {
@@ -25,5 +26,6 @@ class PJ_Module_Loader {
         }
     }
 }
+
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
