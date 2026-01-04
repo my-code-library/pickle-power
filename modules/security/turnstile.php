@@ -15,9 +15,10 @@ define('PJ_TURNSTILE_LOADED', true);
  * - Blocks bots before authentication
  */
 
-// Your Turnstile keys (replace with your real keys)
-$turnstile_site_key   = 'YOUR_SITE_KEY_HERE';
-$turnstile_secret_key = 'YOUR_SECRET_KEY_HERE';
+// Your Turnstile keys (admin settings)
+$keys = pj_get_turnstile_keys();
+$turnstile_site_key   = $keys['site'];
+$turnstile_secret_key = $keys['secret'];
 
 // 1. Inject Turnstile widget into login + registration forms
 add_action('login_form', 'pj_turnstile_render');
