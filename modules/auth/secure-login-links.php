@@ -13,7 +13,7 @@ define('PJ_MAGIC_LINKS_LOADED', true);
 // 1. Add "Send Magic Link" button to login form
 add_action('login_form', function() {
     ?>
-    <div style="margin: 20px 0;">
+    <div id="secure-link">
         <button type="submit" name="pj_magic_request" value="1" class="button button-primary" style="margin: 20px 0;width: 100%;">
             Send me a secure login link
         </button>
