@@ -3,7 +3,7 @@
  * Plugin Name: Pickle Juice
  * Description: Email only registration-login, Google & Microsoft analytics/webmaster tools, custom login branding,
  * Author: Pickle Juice
- * Version: 1.0.3
+ * Version: 1.0.4
  * Text Domain: pickle-juice
  * Domain Path: /languages
  */
@@ -15,3 +15,4 @@ if (!defined('ABSPATH')) {
 
 // Include the module loader
 require_once plugin_dir_path(__FILE__) . 'includes/module-loader.php';
+
