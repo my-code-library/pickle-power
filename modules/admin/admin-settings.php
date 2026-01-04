@@ -22,8 +22,8 @@ class PJ_Settings_Page {
      */
     public static function add_menu() {
         add_menu_page(
-            'Pickle Juice Settings',      // Page title
-            'Pickle Juice',               // Menu title
+            'More Settings',      // Page title
+            'More Settings',               // Menu title
             'manage_options',             // Capability
             'pj-settings',                // Menu slug
             [__CLASS__, 'render_page'],   // Callback
