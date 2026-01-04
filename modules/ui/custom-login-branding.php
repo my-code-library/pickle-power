@@ -24,7 +24,7 @@ add_action('login_enqueue_scripts', function() {
             background-image: url(' . esc_url($logo_url) . ') !important;
             background-size: contain !important;
             width: 240px !important;
-            height: 120px !important;
+            height: 240px !important;
             border-radius: 100%;
         }
     </style>';
