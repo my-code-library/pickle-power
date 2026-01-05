@@ -13,14 +13,17 @@ define('PJ_MAGIC_LINKS_LOADED', true);
 // 1. Add "Send Magic Link" button to login form
 add_action('login_form', function() {
 
-    // Magic link button
-    ?>
-        <button type="submit" name="pj_magic_request" value="1" class="button button-primary" style="width:100%;margin:20px 0;">
+    // Only show magic link button when password login is disabled
+    if (get_option('pj_disable_password_login') !== '1') {
+        return;
+    }
+
+    echo '<p style="margin-top:20px;">
+        <button type="submit" name="pj_magic_request" value="1" class="button button-primary" style="width:100%;">
             Send me a magic login link
         </button>
-    <?php
+    </p>';
 });
-
 
 // 2. Handle magic link request
 add_action('login_form_login', function() {
