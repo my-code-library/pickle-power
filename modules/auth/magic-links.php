@@ -6,7 +6,7 @@ define('PJ_MAGIC_LINKS_LOADED', true);
 
 /**
  * --------------------------------------------------
- * Pickle Juice Secure Link Login
+ * Pickle Juice Magic Link Login
  * --------------------------------------------------
  */
 
