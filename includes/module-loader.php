@@ -13,6 +13,7 @@ class PJ_Module_Loader {
         $modules = [
 		// Add modules here
             'admin/admin-settings.php',
+			'auth/custom-login-url.php',
 			'auth/email-only-registration.php',
 			'auth/email-only-auth.php',
 			'auth/magic-links.php',
@@ -35,6 +36,7 @@ class PJ_Module_Loader {
 
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
 
 
