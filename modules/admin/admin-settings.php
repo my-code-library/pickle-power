@@ -63,6 +63,35 @@ add_settings_field(
     'pj_turnstile_section'
 );
 
+        // Register password login toggle
+register_setting('pj_settings_group', 'pj_disable_password_login');
+
+// Section: Passwordless Login
+add_settings_section(
+    'pj_passwordless_section',
+    'Passwordless Login',
+    function() {
+        echo '<p>Control whether users can log in with a password or only via magic link.</p>';
+    },
+    'pj-settings'
+);
+
+// Field: Disable Password Login
+add_settings_field(
+    'pj_disable_password_login',
+    'Disable Password Login',
+    function() {
+        $value = get_option('pj_disable_password_login', '0');
+        echo '<label>';
+        echo '<input type="checkbox" name="pj_disable_password_login" value="1" ' . checked($value, '1', false) . ' />';
+        echo ' Disable password login (magic link only)';
+        echo '</label>';
+    },
+    'pj-settings',
+    'pj_passwordless_section'
+);
+
+
     }
 
     public static function render_page() {
