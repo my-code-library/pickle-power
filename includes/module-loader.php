@@ -16,6 +16,7 @@ class PJ_Module_Loader {
 			'auth/email-only-registration.php',
 			'auth/email-only-auth.php',
 			'auth/magic-links.php',
+			'auth/registration-email.php',
 			'security/turnstile.php',
 			'trackers/analytics.php',
 			'ui/custom-login-branding.php',
@@ -34,6 +35,7 @@ class PJ_Module_Loader {
 
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
 
 
