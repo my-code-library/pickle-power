@@ -22,9 +22,9 @@ function pj_turnstile_render() {
         return; // No widget if not configured
     }
 
-    echo '<div style="margin: 20px 0;">
+    echo '<div>
         <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
-        <div class="cf-turnstile" data-sitekey="' . esc_attr($site_key) . '"></div>
+        <div class="cf-turnstile" data-sitekey="' . esc_attr($site_key) . '" style="margin: 20px 0;"></div>
     </div>';
 }
 
