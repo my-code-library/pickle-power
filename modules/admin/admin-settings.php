@@ -13,8 +13,8 @@ class PJ_Settings_Page {
 
     public static function add_menu() {
         add_menu_page(
-            'Additional Settings',
-            'Additional Settings',
+            'Options',
+            'Options',
             'manage_options',
             'pj-settings',
             [__CLASS__, 'render_page'],
