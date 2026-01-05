@@ -18,8 +18,8 @@ add_action('login_form', function() {
         return;
     }
 
-    echo '<p style="margin-top:20px;">
-        <button type="submit" name="pj_magic_request" value="1" class="button button-primary" style="width:100%;">
+    echo '<p style="">
+        <button type="submit" name="pj_magic_request" value="1" class="button button-primary" style="width:100%;margin: 20px 0;">
             Send me a magic login link
         </button>
     </p>';
