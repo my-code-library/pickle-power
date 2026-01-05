@@ -32,7 +32,6 @@ add_action('login_head', function() {
 });
 
 // 2. Handle magic link request
-// 2. Handle magic link request
 add_action('login_form_login', function() {
 
     if (!isset($_POST['pj_magic_request'])) {
