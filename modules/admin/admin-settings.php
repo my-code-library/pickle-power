@@ -63,7 +63,7 @@ add_settings_field(
     'pj_turnstile_section'
 );
 
-        // Register password login toggle
+// Register password login toggle
 register_setting('pj_settings_group', 'pj_disable_password_login');
 
 // Section: Passwordless Login
