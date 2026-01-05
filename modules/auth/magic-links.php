@@ -26,8 +26,8 @@ add_action('login_form', function() {
 
 add_action('login_head', function() {
     echo '<style>
-        .pj-magic-link-wrap { margin-top: 20px; }
-        .pj-magic-link-btn { width: 100%; }
+        .pj-magic-link-wrap { margin: 20px 0; }
+        .pj-magic-link-btn { margin: 20px 0;height:30px;width: 100%; }
     </style>';
 });
 
