@@ -6,46 +6,37 @@ define('PJ_PASSWORDLESS_TOGGLE_LOADED', true);
 
 /**
  * --------------------------------------------------
- * Hide Password Field When Password Login Is Disabled
+ * Passwordless Mode (Hide Password + Disable Login Button)
  * --------------------------------------------------
  */
 
 add_action('login_form', function() {
 
+    // Only apply if password login is disabled
     if (get_option('pj_disable_password_login') !== '1') {
         return;
     }
 
-    echo '<style>
-        #user_pass,
-        label[for="user_pass"],
-        #loginform p:has(#user_pass) {
-            display: none !important;
-        }
-    </style>';
+    // Remove password field + login button using JS (safe + universal)
+    echo '<script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            // Hide password field
+            const passField = document.getElementById("user_pass");
+            if (passField) {
+                passField.closest("p").style.display = "none";
+            }
+
+            // Hide login button
+            const loginBtn = document.getElementById("wp-submit");
+            if (loginBtn) {
+                loginBtn.style.display = "none";
+            }
+
+        });
+    </script>';
 
     echo '<p style="margin-top:10px; font-weight:bold;">
         Password login is disabled. Use the magic link button below.
     </p>';
 });
-
-
-add_filter('authenticate', function($user, $username, $password) {
-
-    $disabled = get_option('pj_disable_password_login', '0');
-
-    if ($disabled !== '1') {
-        return $user; // Password login allowed
-    }
-
-    // If user tries to log in with a password, block it
-    if (!empty($password)) {
-        return new WP_Error(
-            'password_disabled',
-            __('Password login is disabled. Please use a magic link.')
-        );
-    }
-
-    return $user;
-
-}, 5, 3);
