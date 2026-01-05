@@ -19,7 +19,7 @@ class PJ_Module_Loader {
 			'trackers/analytics.php',
 			'ui/custom-login-branding.php',
 			'auth/magic-links.php',
-
+			'auth/passwordless-toggle.php',
         ];
 
         foreach ($modules as $module) {
@@ -34,6 +34,7 @@ class PJ_Module_Loader {
 
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
 
 
