@@ -12,24 +12,23 @@ define('PJ_PASSWORDLESS_TOGGLE_LOADED', true);
 
 add_action('login_form', function() {
 
-    $disabled = get_option('pj_disable_password_login', '0');
-
-    if ($disabled !== '1') {
-        return; // Password login still allowed
+    if (get_option('pj_disable_password_login') !== '1') {
+        return;
     }
 
-    // Hide password field with CSS
     echo '<style>
-        #loginform p:nth-of-type(2) { display:none !important; }
-        #user_pass { display:none !important; }
-        label[for="user_pass"] { display:none !important; }
+        #user_pass,
+        label[for="user_pass"],
+        #loginform p:has(#user_pass) {
+            display: none !important;
+        }
     </style>';
 
-    // Add a notice
     echo '<p style="margin-top:10px; font-weight:bold;">
         Password login is disabled. Use the magic link button below.
     </p>';
 });
+
 
 add_filter('authenticate', function($user, $username, $password) {
 
