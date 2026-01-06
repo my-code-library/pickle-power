@@ -6,13 +6,14 @@ define('PJ_CUSTOM_LOGIN_LOADED', true);
 
 /**
  * --------------------------------------------------
- * Custom Login URL Module (Pickle Juice)
+ * Pickle Juice – Custom Login URL Module
  * --------------------------------------------------
  *
  * - Replaces wp-login.php with a custom slug
- * - Avoids redirect loops
- * - Respects magic links, password resets, and core actions
- * - Plays nice with POST-based flows
+ * - Prevents redirect loops (even when WP internally loads wp-login.php)
+ * - Allows magic links, resets, logout, lost password, etc.
+ * - Filters site_url() so plugins stop linking to wp-login.php
+ * - Minimal, predictable, override-safe
  *
  * Option: pj_custom_login_slug
  */
@@ -57,32 +58,40 @@ add_action('login_init', function() {
     $slug = trim(get_option('pj_custom_login_slug', ''), '/');
     if (!$slug) return;
 
-    // Current request path (no query string)
-    $request_path = parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH);
-    $request_path = trim($request_path, '/');
+    $uri = $_SERVER['REQUEST_URI'] ?? '';
 
-    // If we're already at the custom slug, do nothing
-    if ($request_path === $slug) {
+    /**
+     * --------------------------------------------------
+     * 1. If the PUBLIC URL already IS the custom slug,
+     *    do nothing.
+     *
+     * This is the key to preventing redirect loops.
+     * --------------------------------------------------
+     */
+    if (preg_match("#^/{$slug}(/|$)#", $uri)) {
         return;
     }
 
-    // Allow magic link processing
-    if (isset($_GET['pj_magic'])) {
-        return;
-    }
+    /**
+     * --------------------------------------------------
+     * 2. Allow magic link flows
+     * --------------------------------------------------
+     */
+    if (isset($_GET['pj_magic'])) return;
+    if (!empty($_POST['pj_magic_request'])) return;
 
-    // Allow magic link request POSTs
-    if (!empty($_POST['pj_magic_request'])) {
-        return;
-    }
+    /**
+     * --------------------------------------------------
+     * 3. Allow classic login POSTs (until removed)
+     * --------------------------------------------------
+     */
+    if (!empty($_POST['log'])) return;
 
-    // If you're still supporting classic username login, allow login POSTs
-    // Once removed, you can safely delete this block.
-    if (!empty($_POST['log'])) {
-        return;
-    }
-
-    // Allow all core WP login actions (prevents loops)
+    /**
+     * --------------------------------------------------
+     * 4. Allow all core WP login actions
+     * --------------------------------------------------
+     */
     $allowed_actions = [
         'login',
         'logout',
@@ -93,20 +102,21 @@ add_action('login_init', function() {
         'postpass',
     ];
 
-    if (isset($_GET['action']) && $_GET['action'] !== '') {
-        $action = sanitize_key(wp_unslash($_GET['action']));
-        if (in_array($action, $allowed_actions, true)) {
-            return;
-        }
-    }
-
-    // Only intercept direct wp-login.php hits
-    $requested_file = basename($request_path);
-    if (strcasecmp($requested_file, 'wp-login.php') !== 0) {
+    if (isset($_GET['action']) && in_array($_GET['action'], $allowed_actions, true)) {
         return;
     }
 
-    // Redirect to custom login slug
-    wp_redirect(home_url("/{$slug}/"));
-    exit;
+    /**
+     * --------------------------------------------------
+     * 5. If the internal script is wp-login.php,
+     *    redirect to custom slug
+     * --------------------------------------------------
+     */
+    $path = parse_url($uri, PHP_URL_PATH);
+    $script = basename($path);
+
+    if (strcasecmp($script, 'wp-login.php') === 0) {
+        wp_redirect(home_url("/{$slug}/"));
+        exit;
+    }
 });
