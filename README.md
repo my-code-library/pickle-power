@@ -1,30 +1,23 @@
-# Pickle Juice
+🥒 Pickle Juice
 
-A custom WordPress plugin powering the functionality behind organicpicklejuice.com.  
-Built with a modular, override-safe architecture focused on performance, security, and a clean artist-centric experience.
+A Custom WordPress Plugin for OrganicPickleJuice.com
+Pickle Juice is a modular, override‑safe WordPress plugin powering the custom functionality behind organicpicklejuice.com.
+It’s built for performance, security, and a clean creative workflow — supporting an artist‑centric web presence with minimal bloat and maximum control.
 
----
+🚀 Features
 
-## Features
+Modular Architecture  
 
-- **Modular architecture**  
-  Each feature lives in its own module for clarity and maintainability.
+Each feature lives in its own module for clarity, maintainability, and selective loading.
 
-- **Override-safe structure**  
-  Designed so customizations can evolve without breaking core functionality.
+Override‑Safe Structure  
 
-- **Lightweight and fast**  
-  Pure PHP with no unnecessary dependencies.
+Designed so customizations can evolve without breaking core functionality.
 
-- **Artist-focused UX**  
-  Tailored for the Organic Pickle Juice brand.
+Lightweight & Fast  
 
----
+Pure PHP, no unnecessary dependencies, and optimized for production hosting.
 
-## Project structure
+Artist‑Focused UX  
 
-```text
-pickle-juice/
-├── includes/        # Core helpers, shared logic, utilities
-├── modules/         # Self-contained feature modules
-└── pickle-juice.php # Main plugin loader/bootstrap
+Tailored for the needs of the Organic Pickle Juice brand — clean, branded, and minimal.
