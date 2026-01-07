@@ -11,6 +11,11 @@ define('PJ_PASSWORDLESS_TOGGLE_LOADED', true);
  */
 
 add_action('login_form', function() {
+
+    if ( !get_option('pj_enable_magic_link_login', 0) ) {
+        return;
+    }
+    
     echo '<script>
 document.addEventListener("DOMContentLoaded", function() {
 
