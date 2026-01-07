@@ -149,22 +149,39 @@ class PJ_Settings_Page {
         ?>
 </form>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.querySelectorAll('.pj-toggle-key').forEach(function(button) {
-            button.addEventListener('click', function() {
-                const input = document.getElementById(this.dataset.target);
-                if (!input) return;
-    
-                if (input.type === 'password') {
-                    input.type = 'text';
-                    this.textContent = 'Hide';
-                } else {
-                    input.type = 'password';
-                    this.textContent = 'Show';
-                }
-            });
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.pj-toggle-key').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const input = document.getElementById(this.dataset.target);
+            if (!input) return;
+
+            if (input.type === 'password') {
+                input.type = 'text';
+                this.textContent = 'Hide';
+            } else {
+                input.type = 'password';
+                this.textContent = 'Show';
+            }
         });
     });
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('pj_enable_custom_login_url');
+    const slugField = document.getElementById('pj_custom_login_slug_wrapper');
+
+    function updateVisibility() {
+        if (toggle.checked) {
+            slugField.style.display = 'none';
+        } else {
+            slugField.style.display = '';
+        }
+    }
+
+    toggle.addEventListener('change', updateVisibility);
+    updateVisibility(); // Run on load
+});
 </script>
 
         </div>
