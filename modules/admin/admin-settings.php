@@ -90,22 +90,7 @@ class PJ_Settings_Page {
             'pj-settings',
             'pj_passwordless_section'
         );
-        
-        register_setting('pj_settings_group', 'pj_custom_login_slug');
-        
-        add_settings_field(
-            'pj_custom_login_slug',
-            'Custom Login URL',
-            function() {
-                $value = esc_attr(get_option('pj_custom_login_slug', ''));
-                echo '<input type="text" name="pj_custom_login_slug" value="' . $value . '" placeholder="login" />';
-                echo '<p class="description">Example: entering <strong>login</strong> makes your login URL <code>/login/</code></p>';
-            },
-            'pj-settings',
-            'pj_passwordless_section'
-        );
-
-        register_setting(
+              register_setting(
             'pj_settings_group',
             'pj_enable_custom_login_url',
             [
@@ -131,7 +116,20 @@ class PJ_Settings_Page {
             'pj_passwordless_section'
         );
 
-    }
+    }  
+        register_setting('pj_settings_group', 'pj_custom_login_slug');
+        
+        add_settings_field(
+            'pj_custom_login_slug',
+            'Custom Login URL',
+            function() {
+                $value = esc_attr(get_option('pj_custom_login_slug', ''));
+                echo '<input type="text" name="pj_custom_login_slug" value="' . $value . '" placeholder="login" />';
+                echo '<p class="description">Example: entering <strong>login</strong> makes your login URL <code>/login/</code></p>';
+            },
+            'pj-settings',
+            'pj_passwordless_section'
+        );
 
     public static function render_page() {
         ?>
