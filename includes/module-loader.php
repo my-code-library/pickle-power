@@ -11,19 +11,30 @@ class PJ_Module_Loader {
         $base_dir = $plugin_root . '/modules/';
 
         $modules = [
-		// Add modules here
+            // Always-loaded modules
             'admin/admin-settings.php',
-			'auth/custom-login-url.php',
-			'auth/email-only-registration.php',
-			'auth/email-only-auth.php',
-			'auth/magic-links.php',
-			'auth/registration-email.php',
-			'security/turnstile.php',
-			'trackers/analytics.php',
-			'ui/custom-login-branding.php',
-			'ui/passwordless-toggle.php',
+            'auth/email-only-registration.php',
+            'auth/email-only-auth.php',
+            'auth/magic-links.php',
+            'auth/registration-email.php',
+            'security/turnstile.php',
+            'trackers/analytics.php',
+            'ui/custom-login-branding.php',
+            'ui/passwordless-toggle.php',
         ];
 
+        /**
+         * Conditionally loaded modules
+         * --------------------------------
+         * These modules depend on admin settings.
+         */
+
+        // Custom Login URL module
+        if ( get_option('pj_enable_custom_login_url', 1) ) {
+            $modules[] = 'auth/custom-login-url.php';
+        }
+
+        // Loop through and load modules
         foreach ($modules as $module) {
             $path = $base_dir . $module;
 
@@ -34,8 +45,8 @@ class PJ_Module_Loader {
     }
 }
 
-
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
 
 
