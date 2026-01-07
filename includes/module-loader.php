@@ -34,7 +34,7 @@ class PJ_Module_Loader {
             $modules[] = 'auth/custom-login-url.php';
         }
 
-        if ( get_option('pj_enable_magic_link_login', '0') ) {
+        if ( get_option('pj_enable_magic_link_login', '1') ) {
             $modules[] = 'auth/magic-links.php';
         }
         
@@ -51,6 +51,7 @@ class PJ_Module_Loader {
 }
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
 
 
