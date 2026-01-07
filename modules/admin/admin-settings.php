@@ -63,28 +63,31 @@ class PJ_Settings_Page {
             'pj_turnstile_section'
         );
         
-        // Register password login toggle
-        register_setting('pj_settings_group', 'pj_disable_password_login');
+        // Register magic link login toggle
+        register_setting('pj_settings_group', 'pj_enable_magic_link_login', [
+                'type' => 'boolean',
+                'default' => 0,
+        ]);
         
         // Section: Passwordless Login
         add_settings_section(
             'pj_passwordless_section',
             'Passwordless Login',
             function() {
-                echo '<p>Control whether users can log in with a password or only via magic link.</p>';
+                echo '<p>Choose password or magic link login.</p>';
             },
             'pj-settings'
         );
         
-        // Field: Disable Password Login
+        // Field: Enable magic link login
         add_settings_field(
-            'pj_disable_password_login',
-            'Disable Password Login',
+            'pj_enable_magic_link_login',
+            'Enable Magic Login Links',
             function() {
-                $value = get_option('pj_disable_password_login', '0');
+                $value = get_option('pj_enable_magic_link_login', '0');
                 echo '<label>';
-                echo '<input type="checkbox" name="pj_disable_password_login" value="1" ' . checked($value, '1', false) . ' />';
-                echo ' Disable password login (magic link only)';
+                echo '<input type="checkbox" name="pj_enable_magic_link_login" value="1" ' . checked($value, '1', false) . ' />';
+                echo 'When enabled, a user can login with an email link instead of a password.';
                 echo '</label>';
             },
             'pj-settings',
