@@ -15,7 +15,7 @@ class PJ_Module_Loader {
             'admin/admin-settings.php',
             'auth/email-only-registration.php',
             'auth/email-only-auth.php',
-            'auth/magic-links.php',
+        //    'auth/magic-links.php',
             'auth/registration-email.php',
             'security/turnstile.php',
             'trackers/analytics.php',
@@ -34,6 +34,11 @@ class PJ_Module_Loader {
             $modules[] = 'auth/custom-login-url.php';
         }
 
+        if ( get_option('pj_enable_magic_link_login', '0') ) {
+            $modules[] = 'auth/magic-links.php';
+        }
+        
+
         // Loop through and load modules
         foreach ($modules as $module) {
             $path = $base_dir . $module;
@@ -46,6 +51,7 @@ class PJ_Module_Loader {
 }
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
 
 
