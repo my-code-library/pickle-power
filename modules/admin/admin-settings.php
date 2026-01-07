@@ -169,9 +169,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
     function updateVisibility() {
         if (toggle.checked) {
-            slugField.style.display = 'none';
-        } else {
             slugField.style.display = '';
+        } else {
+            slugField.style.display = 'none';
         }
     }
 
