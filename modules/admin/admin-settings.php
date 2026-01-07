@@ -146,22 +146,22 @@ class PJ_Settings_Page {
                 ?>
             </form>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.pj-toggle-key').forEach(function(button) {
-        button.addEventListener('click', function() {
-            const input = document.getElementById(this.dataset.target);
-            if (!input) return;
-
-            if (input.type === 'password') {
-                input.type = 'text';
-                this.textContent = 'Hide';
-            } else {
-                input.type = 'password';
-                this.textContent = 'Show';
-            }
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('.pj-toggle-key').forEach(function(button) {
+            button.addEventListener('click', function() {
+                const input = document.getElementById(this.dataset.target);
+                if (!input) return;
+    
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.textContent = 'Hide';
+                } else {
+                    input.type = 'password';
+                    this.textContent = 'Show';
+                }
+            });
         });
     });
-});
 </script>
 
         </div>
