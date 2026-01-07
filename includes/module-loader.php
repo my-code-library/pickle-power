@@ -35,9 +35,7 @@ class PJ_Module_Loader {
         }
 
         if ( get_option('pj_enable_magic_link_login', '1') ) {
-            $modules = [
-                'auth/magic-links.php',
-            ];
+            $modules[] = 'auth/magic-links.php';
         }
         // Loop through and load modules
         foreach ($modules as $module) {
@@ -51,6 +49,7 @@ class PJ_Module_Loader {
 }
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
 
 
