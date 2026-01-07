@@ -19,7 +19,6 @@ class PJ_Module_Loader {
             'security/turnstile.php',
             'trackers/analytics.php',
             'ui/custom-login-branding.php',
-            'ui/passwordless-toggle.php',
         ];
 
         /**
@@ -36,7 +35,9 @@ class PJ_Module_Loader {
         if ( get_option('pj_enable_magic_link_login', '1') ) {
             $modules[] = 'auth/magic-links.php';
         }
-        
+        if ( get_option('pj_enable_magic_link_login', '1') ) {
+            $modules[] = 'ui/passwordless-toggle.php';
+        }        
 
         // Loop through and load modules
         foreach ($modules as $module) {
@@ -50,6 +51,7 @@ class PJ_Module_Loader {
 }
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
 
 
