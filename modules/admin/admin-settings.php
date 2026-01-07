@@ -90,7 +90,8 @@ class PJ_Settings_Page {
             'pj-settings',
             'pj_passwordless_section'
         );
-              register_setting(
+        
+        register_setting(
             'pj_settings_group',
             'pj_enable_custom_login_url',
             [
@@ -106,7 +107,7 @@ class PJ_Settings_Page {
                 $value = get_option('pj_enable_custom_login_url', 1);
         
                 echo '<label>';
-                echo '<input type="checkbox" name="pj_enable_custom_login_url" value="1" ' . checked($value, 1, false) . ' />';
+                echo '<input type="checkbox" id="pj_enable_custom_login_url" name="pj_enable_custom_login_url" value="1" ' . checked($value, 1, false) . ' />';
                 echo ' Activate the Custom Login URL module';
                 echo '</label>';
         
@@ -117,16 +118,20 @@ class PJ_Settings_Page {
         );
 
     }  
-        register_setting('pj_settings_group', 'pj_custom_login_slug');
+    register_setting('pj_settings_group', 'pj_custom_login_slug');
         
         add_settings_field(
             'pj_custom_login_slug',
             'Custom Login URL',
-            function() {
-                $value = esc_attr(get_option('pj_custom_login_slug', ''));
-                echo '<input type="text" name="pj_custom_login_slug" value="' . $value . '" placeholder="login" />';
-                echo '<p class="description">Example: entering <strong>login</strong> makes your login URL <code>/login/</code></p>';
-            },
+            function () {
+                $value = get_option('pj_custom_login_slug', 'login');
+            
+                echo '<div id="pj_custom_login_slug_wrapper">';
+                echo '<input type="text" name="pj_custom_login_slug" value="' . esc_attr($value) . '" class="regular-text" />';
+                echo '<p class="description">This slug replaces wp-login.php. Example: /login</p>';
+                echo '</div>';
+            }
+
             'pj-settings',
             'pj_passwordless_section'
         );
