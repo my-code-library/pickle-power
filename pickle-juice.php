@@ -14,7 +14,6 @@ if (!defined('ABSPATH')) {
 }
 
 // Adds settings link support
-
 add_filter('plugin_action_links_' . plugin_basename(__FILE__), function($links) {
     $settings_url = admin_url('admin.php?page=pj-settings');
     $settings_link = '<a href="' . esc_url($settings_url) . '">Settings</a>';
@@ -24,5 +23,6 @@ add_filter('plugin_action_links_' . plugin_basename(__FILE__), function($links) 
 
 // Include the module loader
 require_once plugin_dir_path(__FILE__) . 'includes/module-loader.php';
+
 
 
