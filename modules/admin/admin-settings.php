@@ -129,7 +129,7 @@ class PJ_Settings_Page {
                 echo '<input type="text" name="pj_custom_login_slug" value="' . esc_attr($value) . '" class="regular-text" />';
                 echo '<p class="description">This slug replaces wp-login.php. Example: /login</p>';
                 echo '</div>';
-            }
+            },
 
             'pj-settings',
             'pj_passwordless_section'
