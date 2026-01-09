@@ -37,6 +37,12 @@ class PJ_Module_Loader {
         if ( get_option('pj_enable_magic_link_login', '1') ) {
             $modules[] = 'auth/magic-links.php';
         }
+
+        // Disable WordPress.org admin bar menu
+        if ( get_option('pj_disable_wp_org_menu') ) {
+            $modules[] = 'admin/remove-wp-org-menu.php';
+        }
+
         // Loop through and load modules
         foreach ($modules as $module) {
             $path = $base_dir . $module;
@@ -49,6 +55,7 @@ class PJ_Module_Loader {
 }
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
 
 
