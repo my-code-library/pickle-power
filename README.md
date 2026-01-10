@@ -1,4 +1,4 @@
-# 🥒 Pickle Juice
+# Pickle  Power
 
 ## A Custom WordPress Plugin for OrganicPickleJuice.com
 
