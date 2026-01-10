@@ -43,3 +43,39 @@ pickle-juice/
    ```
 
 3.  Activate Pickle Juice from the WordPress Plugins admin screen.
+
+## 🧩 Creating New Modules
+
+Modules live in `/modules` and are automatically loaded by the plugin bootstrap.
+
+A typical module structure:
+
+```
+modules/
+└── example-module/
+    ├── example-module.php
+    └── assets/
+```
+
+## 🛡️ Security & Best Practices
+
+- Sanitization and escaping follow WordPress standards
+- No direct file access
+- Modular loading prevents unnecessary code execution
+- Ideal for production environments with custom branding needs
+
+## 🧪 Development
+
+Enable debugging in `wp-config.php`:
+
+```
+define( 'WP_DEBUG', true );
+define( 'WP_DEBUG_LOG', true );
+```
+Then tail your logs while working:
+
+```
+tail -f wp-content/debug.log
+```
+
+
