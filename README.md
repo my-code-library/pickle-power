@@ -82,7 +82,7 @@ tail -f wp-content/debug.log
 
 ```
 Pickle Juice – A modular WordPress plugin for branded login, security, and admin UX.
-Copyright (C) 2026  Scotty
+Copyright (C) 2026 Gold Coast Music/Pickle Juice
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
