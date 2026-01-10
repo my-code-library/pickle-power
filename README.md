@@ -27,7 +27,7 @@ pickle-juice/
 │
 ├── includes/        # Core helpers, shared logic, utilities
 ├── modules/         # Self-contained feature modules
-└── picklejuice.php  # Main plugin loader/bootstrap
+└── functions.php    # Main plugin loader/bootstrap
 ```
 
 ## 🔧 Installation
