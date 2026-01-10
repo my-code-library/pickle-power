@@ -24,10 +24,3 @@ add_filter('plugin_action_links_' . plugin_basename(__FILE__), function($links) 
 // Include the module loader
 require_once plugin_dir_path(__FILE__) . 'includes/module-loader.php';
 
-
-
-
-
-
-
-
