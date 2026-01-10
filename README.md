@@ -35,5 +35,11 @@ pickle-juice/
 1. Download or clone the repository:
    ```
    git clone https://github.com/my-code-library/pickle-juice.git
-  ```
+   ```
 
+2. Place the folder into:
+   ```
+   wp-content/plugins/pickle-juice
+   ```
+
+3.  Activate Pickle Juice from the WordPress Plugins admin screen.
