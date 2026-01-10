@@ -23,7 +23,7 @@ Tailored for the needs of the Organic Pickle Juice brand — clean, branded, and
 ## 📁 Project Structure
 
 ```
-pickle-juice/
+pickle-power/
 │
 ├── includes/        # Core helpers, shared logic, utilities
 ├── modules/         # Self-contained feature modules
@@ -34,15 +34,15 @@ pickle-juice/
 
 1. Download or clone the repository:
    ```
-   git clone https://github.com/my-code-library/pickle-juice.git
+   git clone https://github.com/my-code-library/pickle-power.git
    ```
 
 2. Place the folder into:
    ```
-   wp-content/plugins/pickle-juice
+   wp-content/plugins/pickle-power
    ```
 
-3.  Activate Pickle Juice from the WordPress Plugins admin screen.
+3.  Activate Pickle Power from the WordPress Plugins admin screen.
 
 ## 🧩 Creating New Modules
 
@@ -81,7 +81,7 @@ tail -f wp-content/debug.log
 ## 📜 License
 
 ```
-Pickle Juice – A modular WordPress plugin for branded login, security, and admin UX.
+Pickle Power – A modular WordPress plugin for branded login, security, and admin UX.
 Copyright (C) 2026 Gold Coast Music/Pickle Juice
 
 This program is free software; you can redistribute it and/or modify
@@ -101,6 +101,6 @@ Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 ## 💬 About
 
-Pickle Juice is a custom WordPress plugin built to support the evolving digital identity of the [Pickle Juice Electronic Dance Music](https://organicpicklejuice.com/) artist project.
+Pickle Power is a custom WordPress plugin built to support the evolving digital identity of the [Pickle Juice Electronic Dance Music](https://organicpicklejuice.com/) artist project.
 
 It is maintained by the artist via *my-code-library*.
