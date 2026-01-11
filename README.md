@@ -1,4 +1,4 @@
-# 🥒Pickle 🔌Power
+# 🥒Pickle🔌Power
 
 ## A Custom WordPress Plugin for OrganicPickleJuice.com
 
