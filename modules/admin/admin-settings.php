@@ -22,6 +22,14 @@ class PJ_Settings_Page {
             80
         );
     }
+    
+    // Clear footer text when the toggle is unchecked
+    add_filter('pre_update_option_pj_disable_wp_org_menu', function ($new, $old) {
+        if (!$new) {
+            update_option('pj_admin_footer_text', '');
+        }
+        return $new;
+    }, 10, 2);
 
     public static function register_settings() {
 
@@ -171,6 +179,8 @@ class PJ_Settings_Page {
         );
         
 } 
+
+    
     public static function render_page() {
         ?>
 <div class="wrap">
