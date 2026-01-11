@@ -156,7 +156,7 @@ class PJ_Settings_Page {
                 echo ' Remove WordPress.org admin bar menu and replace footer text';
                 echo '</label>';
 
-                echo '<p class="description">Hides the WordPress logo menu and replaces the footer text while keeping the version number visible.</p>';
+                echo '<p class="description">Hides the WordPress logo menu and replaces the admin footer text.</p>';
             },
             'pj-settings',
             'pj_passwordless_section'
