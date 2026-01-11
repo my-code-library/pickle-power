@@ -24,14 +24,12 @@ Tailored for the needs of the Organic Pickle Juice brand — clean, branded, and
 
 ```
 pickle-power/
-├── picklepower.php
+├── functions.php
 ├── includes/
 ├── modules/
 │   ├── admin/
 │   ├── auth/
 │   ├── security/
-│   │   ├── class-custom-login-url.php
-│   │   └── rewrite.php
 │   └── ui/
 └── readme.txt
 
