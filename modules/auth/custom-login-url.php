@@ -114,6 +114,22 @@ add_action('login_init', function() {
      */
     $path = parse_url($uri, PHP_URL_PATH);
     $script = basename($path);
+    /**
+     * --------------------------------------------------
+     * Bluehost-proof override:
+     * If WordPress is internally loading wp-login.php,
+     * but the public URL is NOT your custom slug,
+     * force redirect to your slug.
+     * --------------------------------------------------
+     */
+    if (
+        isset($GLOBALS['pagenow']) &&
+        $GLOBALS['pagenow'] === 'wp-login.php' &&
+        !preg_match("#^/{$slug}(/|$)#", $uri)
+    ) {
+        wp_redirect(home_url("/{$slug}/"));
+        exit;
+    }
 
     if (strcasecmp($script, 'wp-login.php') === 0) {
         wp_redirect(home_url("/{$slug}/"));
