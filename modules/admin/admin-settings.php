@@ -161,9 +161,10 @@ class PJ_Settings_Page {
             'Custom Footer Text',
             function () {
                 $value = esc_attr(get_option('pj_custom_admin_footer_text', ''));
-        
+                echo '<div id="pj_footer_text_wrapper">';
                 echo '<input type="text" name="pj_custom_admin_footer_text" value="' . $value . '" class="regular-text" />';
                 echo '<p class="description">Example: “Powered by Pickle Juice”</p>';
+                echo '</div>';
             },
             'pj-settings',
             'pj_passwordless_section'
@@ -217,8 +218,26 @@ document.addEventListener('DOMContentLoaded', function () {
     updateVisibility(); // Run on load
 });
 </script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('pj_disable_wp_org_menu');
+    const wrapper = document.getElementById('pj_footer_text_wrapper');
+    const textField = document.getElementById('pj_admin_footer_text');
 
-        </div>
+    function updateVisibility() {
+        if (toggle.checked) {
+            wrapper.style.display = 'block';
+        } else {
+            wrapper.style.display = 'none';
+            textField.value = ''; // Clear the field when disabled
+        }
+    }
+
+    toggle.addEventListener('change', updateVisibility);
+    updateVisibility(); // Run on page load
+});
+</script>
+</div>
         <?php
     }
 }
