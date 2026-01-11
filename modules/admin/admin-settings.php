@@ -25,6 +25,10 @@ class PJ_Settings_Page {
 
     public static function register_settings() {
 
+        /* ------------------------------
+         * TURNSTILE SETTINGS
+         * ------------------------------ */
+
         register_setting('pj_settings_group', 'pj_turnstile_site_key');
         register_setting('pj_settings_group', 'pj_turnstile_secret_key');
 
@@ -37,7 +41,6 @@ class PJ_Settings_Page {
             'pj-settings'
         );
 
-        // Field: Site Key
         add_settings_field(
             'pj_turnstile_site_key',
             'Turnstile Site Key',
@@ -49,8 +52,7 @@ class PJ_Settings_Page {
             'pj-settings',
             'pj_turnstile_section'
         );
-        
-        // Field: Secret Key
+
         add_settings_field(
             'pj_turnstile_secret_key',
             'Turnstile Secret Key',
@@ -62,14 +64,17 @@ class PJ_Settings_Page {
             'pj-settings',
             'pj_turnstile_section'
         );
-        
-        // Register magic link login toggle
+
+
+        /* ------------------------------
+         * PASSWORDLESS LOGIN
+         * ------------------------------ */
+
         register_setting('pj_settings_group', 'pj_enable_magic_link_login', [
-                'type' => 'boolean',
-                'default' => 0,
+            'type' => 'boolean',
+            'default' => 0,
         ]);
-        
-        // Section: Passwordless Login
+
         add_settings_section(
             'pj_passwordless_section',
             'Passwordless Login',
@@ -78,8 +83,7 @@ class PJ_Settings_Page {
             },
             'pj-settings'
         );
-        
-        // Field: Enable magic link login
+
         add_settings_field(
             'pj_enable_magic_link_login',
             'Enable Magic Login Links',
@@ -93,22 +97,22 @@ class PJ_Settings_Page {
             'pj-settings',
             'pj_passwordless_section'
         );
-        
-        register_setting(
-            'pj_settings_group',
-            'pj_enable_custom_login_url',
-            [
-                'type'    => 'boolean',
-                'default' => 1,
-            ]
-        );
+
+
+        /* ------------------------------
+         * CUSTOM LOGIN URL
+         * ------------------------------ */
+
+        register_setting('pj_settings_group', 'pj_enable_custom_login_url', [
+            'type'    => 'boolean',
+            'default' => 1,
+        ]);
 
         add_settings_field(
             'pj_enable_custom_login_url',
             'Enable Custom Login URL',
             function () {
                 $value = get_option('pj_enable_custom_login_url', 1);
-        
                 echo '<label>';
                 echo '<input type="checkbox" id="pj_enable_custom_login_url" name="pj_enable_custom_login_url" value="1" ' . checked($value, 1, false) . ' />';
                 echo 'Enable the Custom Login URL module';
@@ -117,9 +121,9 @@ class PJ_Settings_Page {
             'pj-settings',
             'pj_passwordless_section'
         );
- 
-    register_setting('pj_settings_group', 'pj_custom_login_slug');
-        
+
+        register_setting('pj_settings_group', 'pj_custom_login_slug');
+
         add_settings_field(
             'pj_custom_login_slug',
             'Custom Login URL',
@@ -130,115 +134,138 @@ class PJ_Settings_Page {
                 echo '<p class="description">This slug replaces wp-login.php. Example: /login</p>';
                 echo '</div>';
             },
-
             'pj-settings',
             'pj_passwordless_section'
         );
 
+
+        /* ------------------------------
+         * ADMIN DEBRANDING
+         * ------------------------------ */
+
         register_setting('pj_settings_group', 'pj_disable_wp_org_menu');
-        
+
         add_settings_field(
             'pj_disable_wp_org_menu',
             'Admin Bar & Footer Debranding',
             function () {
                 $value = get_option('pj_disable_wp_org_menu', 0);
-        
+
                 echo '<label>';
                 echo '<input type="checkbox" id="pj_disable_wp_org_menu" name="pj_disable_wp_org_menu" value="1" ' . checked($value, 1, false) . ' />';
                 echo ' Remove WordPress.org admin bar menu and replace footer text';
                 echo '</label>';
-        
+
                 echo '<p class="description">Hides the WordPress logo menu and replaces the footer text while keeping the version number visible.</p>';
             },
             'pj-settings',
             'pj_passwordless_section'
         );
-        
+
         register_setting('pj_settings_group', 'pj_custom_admin_footer_text');
-        
+
         add_settings_field(
             'pj_custom_admin_footer_text',
             'Custom Footer Text',
             function () {
                 $value = esc_attr(get_option('pj_custom_admin_footer_text', ''));
                 echo '<div id="pj_footer_text_wrapper">';
-                echo '<input type="text" name="pj_custom_admin_footer_text" value="' . $value . '" class="regular-text" />';
+                echo '<input type="text" id="pj_custom_admin_footer_text" name="pj_custom_admin_footer_text" value="' . $value . '" class="regular-text" />';
                 echo '<p class="description">Example: “Powered by Pickle Juice”</p>';
                 echo '</div>';
-                },
-                'pj-settings',
-                'pj_passwordless_section'
-            );
-        
-        }    
-    
+            },
+            'pj-settings',
+            'pj_passwordless_section'
+        );
+
+
+        /* ------------------------------
+         * SERVER-SIDE SAFETY NET
+         * ------------------------------ */
+
+        add_filter('pre_update_option_pj_disable_wp_org_menu', function ($new, $old) {
+            if (!$new) {
+                update_option('pj_custom_admin_footer_text', '');
+            }
+            return $new;
+        }, 10, 2);
+    }
+
+
+    /* ------------------------------
+     * RENDER SETTINGS PAGE
+     * ------------------------------ */
+
     public static function render_page() {
         ?>
-<div class="wrap">
-<h1></h1>
+        <div class="wrap">
+        <h1></h1>
 
-<form method="post" action="options.php">
-        <?php
-        settings_fields('pj_settings_group');
-        do_settings_sections('pj-settings');
-        submit_button();
-        ?>
-</form>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    document.querySelectorAll('.pj-toggle-key').forEach(function(button) {
-        button.addEventListener('click', function() {
-            const input = document.getElementById(this.dataset.target);
-            if (!input) return;
+        <form method="post" action="options.php">
+            <?php
+            settings_fields('pj_settings_group');
+            do_settings_sections('pj-settings');
+            submit_button();
+            ?>
+        </form>
 
-            if (input.type === 'password') {
-                input.type = 'text';
-                this.textContent = 'Hide';
-            } else {
-                input.type = 'password';
-                this.textContent = 'Show';
-            }
+        <!-- Toggle password visibility -->
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.pj-toggle-key').forEach(function(button) {
+                button.addEventListener('click', function() {
+                    const input = document.getElementById(this.dataset.target);
+                    if (!input) return;
+
+                    if (input.type === 'password') {
+                        input.type = 'text';
+                        this.textContent = 'Hide';
+                    } else {
+                        input.type = 'password';
+                        this.textContent = 'Show';
+                    }
+                });
+            });
         });
-    });
-});
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const toggle = document.getElementById('pj_enable_custom_login_url');
-    const slugField = document.getElementById('pj_custom_login_slug_wrapper');
+        </script>
 
-    function updateVisibility() {
-        if (toggle.checked) {
-            slugField.style.display = '';
-        } else {
-            slugField.style.display = 'none';
-        }
-    }
+        <!-- Show/hide custom login slug -->
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggle = document.getElementById('pj_enable_custom_login_url');
+            const slugField = document.getElementById('pj_custom_login_slug_wrapper');
 
-    toggle.addEventListener('change', updateVisibility);
-    updateVisibility(); // Run on load
-});
-</script>
-<script>
-document.addEventListener('DOMContentLoaded', function () {
-    const toggle = document.getElementById('pj_disable_wp_org_menu');
-    const wrapper = document.getElementById('pj_footer_text_wrapper');
-    const textField = document.getElementById('pj_admin_footer_text');
+            function updateVisibility() {
+                slugField.style.display = toggle.checked ? '' : 'none';
+            }
 
-    function updateVisibility() {
-        if (toggle.checked) {
-            wrapper.style.display = 'block';
-        } else {
-            wrapper.style.display = 'none';
-            textField.value = ''; // Clear the field when disabled
-        }
-    }
+            toggle.addEventListener('change', updateVisibility);
+            updateVisibility();
+        });
+        </script>
 
-    toggle.addEventListener('change', updateVisibility);
-    updateVisibility(); // Run on page load
-});
-</script>
-</div>
+        <!-- Show/hide + clear footer text -->
+        <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const toggle = document.getElementById('pj_disable_wp_org_menu');
+            const wrapper = document.getElementById('pj_footer_text_wrapper');
+            const textField = document.getElementById('pj_custom_admin_footer_text');
+
+            function updateVisibility() {
+                if (toggle.checked) {
+                    wrapper.style.display = 'block';
+                } else {
+                    wrapper.style.display = 'none';
+                    textField.value = '';
+                }
+            }
+
+            toggle.addEventListener('change', updateVisibility);
+            updateVisibility();
+        });
+        </script>
+
+        </div>
         <?php
     }
 }
