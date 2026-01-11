@@ -31,7 +31,7 @@ pickle-power/
 │   ├── auth/
 │   ├── security/
 │   └── ui/
-└── readme.txt
+└── README.md
 
 ```
 
