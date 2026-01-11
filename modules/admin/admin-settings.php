@@ -165,21 +165,12 @@ class PJ_Settings_Page {
                 echo '<input type="text" name="pj_custom_admin_footer_text" value="' . $value . '" class="regular-text" />';
                 echo '<p class="description">Example: “Powered by Pickle Juice”</p>';
                 echo '</div>';
-            },
-            'pj-settings',
-            'pj_passwordless_section'
-        );
+                },
+                'pj-settings',
+                'pj_passwordless_section'
+            );
         
-} 
-    
-        // Clear footer text when the toggle is unchecked
-        add_filter('pre_update_option_pj_disable_wp_org_menu', function ($new, $old) {
-            if (!$new) {
-                update_option('pj_admin_footer_text', '');
-            }
-            return $new;
-        }, 10, 2);
-
+        }    
     
     public static function render_page() {
         ?>
