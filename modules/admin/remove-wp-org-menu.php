@@ -27,7 +27,7 @@ class PJ_Admin_Debranding {
         // Custom footer text
         $custom = trim(get_option('pj_custom_admin_footer_text', ''));
         if ($custom === '') {
-            $custom = 'Powered by Pickle Juice';
+            $custom = 'Running on Pickle Power';
         }
 
         return esc_html($custom);
