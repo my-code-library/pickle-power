@@ -156,7 +156,7 @@ class PJ_Settings_Page {
                 echo ' Remove WordPress.org admin bar menu and replace footer text';
                 echo '</label>';
 
-                echo '<p class="description">Hides the WordPress logo menu and replaces the admin footer text.</p>';
+                echo '<p class="description">Hides the WordPress logo menu and replace the admin footer text.</p>';
             },
             'pj-settings',
             'pj_passwordless_section'
@@ -171,7 +171,7 @@ class PJ_Settings_Page {
                 $value = esc_attr(get_option('pj_custom_admin_footer_text', ''));
                 echo '<div id="pj_footer_text_wrapper">';
                 echo '<input type="text" id="pj_custom_admin_footer_text" name="pj_custom_admin_footer_text" value="' . $value . '" class="regular-text" />';
-                echo '<p class="description">Example: “Powered by Pickle Juice”</p>';
+                echo '<p class="description">Example: “Running on Pickle Power”</p>';
                 echo '</div>';
             },
             'pj-settings',
