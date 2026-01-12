@@ -177,7 +177,80 @@ class PJ_Settings_Page {
             'pj-settings',
             'pj_passwordless_section'
         );
+        
+        // Enable/disable Spotify bar
+        register_setting(
+            'pj_settings_group',            // Your existing settings group
+            'pj_enable_spotify_bar',        // New option name
+            [
+                'type'              => 'boolean',
+                'sanitize_callback' => function ( $value ) {
+                    return $value ? 1 : 0;
+                },
+                'default'           => 0,
+            ]
+        );
+        
+        // Spotify URL
+        register_setting(
+            'pj_settings_group',
+            'pj_spotify_url',
+            [
+                'type'              => 'string',
+                'sanitize_callback' => 'esc_url_raw',
+                'default'           => '',
+            ]
+        );
+        
+        add_settings_section(
+            'pj_spotify_section',
+            'Spotify Notification Bar',
+            function() {
+                echo '<p>Display a notification bar linking to your latest Spotify release.</p>';
+            },
+            'pj-settings'
+        );
 
+        // Checkbox: enable/disable bar
+        add_settings_field(
+            'pj_enable_spotify_bar',
+            'Enable Spotify Notification Bar',
+            function () {
+                $value = get_option( 'pj_enable_spotify_bar', 0 );
+                ?>
+                <label>
+                    <input type="checkbox"
+                           name="pj_enable_spotify_bar"
+                           value="1"
+                        <?php checked( 1, $value ); ?> />
+                    Show Spotify notification bar on the site
+                </label>
+                <?php
+            },
+            'pj-settings',          // 🔁 Replace with your actual settings page slug if needed
+            'pj_spotify_section'   // 🔁 Replace with your existing section ID if needed
+        );
+        
+        // Text input: Spotify URL
+        add_settings_field(
+            'pj_spotify_url',
+            'Spotify Release URL',
+            function () {
+                $value = esc_url( get_option( 'pj_spotify_url', '' ) );
+                ?>
+                <input type="text"
+                       name="pj_spotify_url"
+                       value="<?php echo esc_attr( $value ); ?>"
+                       style="width: 100%; max-width: 600px;"
+                       placeholder="https://open.spotify.com/track/... or /album/...">
+                <p class="description">
+                    Paste the URL of your latest Spotify track, EP, or album.
+                </p>
+                <?php
+            },
+            'pj-settings',          // 🔁 Same as above
+            'pj_spotify_section'   // 🔁 Same as above
+        );
 
         /* ------------------------------
          * SERVER-SIDE SAFETY NET
