@@ -201,6 +201,15 @@ class PJ_Settings_Page {
                 'default'           => '',
             ]
         );
+        
+        add_settings_section(
+            'pj_spotify_section',
+            'Spotify Notification Bar',
+            function() {
+                echo '<p>Display a notification bar linking to your latest Spotify release.</p>';
+            },
+            'pj-settings'
+        );
 
         // Checkbox: enable/disable bar
         add_settings_field(
@@ -219,7 +228,7 @@ class PJ_Settings_Page {
                 <?php
             },
             'pj-settings',          // 🔁 Replace with your actual settings page slug if needed
-            'pj_settings_section'   // 🔁 Replace with your existing section ID if needed
+            'pj_spotify_section'   // 🔁 Replace with your existing section ID if needed
         );
         
         // Text input: Spotify URL
@@ -240,7 +249,7 @@ class PJ_Settings_Page {
                 <?php
             },
             'pj-settings',          // 🔁 Same as above
-            'pj_settings_section'   // 🔁 Same as above
+            'pj_spotify_section'   // 🔁 Same as above
         );
 
         /* ------------------------------
