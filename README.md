@@ -30,6 +30,7 @@ pickle-power/
 │   ├── admin/
 │   ├── auth/
 │   ├── security/
+│   ├── spotify-bar/
 │   ├── trackers/
 │   └── ui/
 └── README.md
