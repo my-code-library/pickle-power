@@ -177,6 +177,30 @@ class PJ_Settings_Page {
             'pj-settings',
             'pj_passwordless_section'
         );
+        
+        // Enable/disable Spotify bar
+        register_setting(
+            'pj_settings_group',            // Your existing settings group
+            'pj_enable_spotify_bar',        // New option name
+            [
+                'type'              => 'boolean',
+                'sanitize_callback' => function ( $value ) {
+                    return $value ? 1 : 0;
+                },
+                'default'           => 0,
+            ]
+        );
+        
+        // Spotify URL
+        register_setting(
+            'pj_settings_group',
+            'pj_spotify_url',
+            [
+                'type'              => 'string',
+                'sanitize_callback' => 'esc_url_raw',
+                'default'           => '',
+            ]
+        );
 
 
         /* ------------------------------
