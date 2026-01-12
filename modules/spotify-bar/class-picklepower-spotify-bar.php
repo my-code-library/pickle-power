@@ -6,7 +6,8 @@ if ( ! class_exists( 'PicklePower_Spotify_Bar' ) ) {
 
         public function __construct() {
             add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_assets' ] );
-            add_action( 'wp_footer', [ $this, 'render_bar' ] );
+            add_action('wp_body_open', [ $this, 'render_bar' ]);
+            add_action('wp_footer', [ $this, 'render_bar' ]);
         }
 
         /**
