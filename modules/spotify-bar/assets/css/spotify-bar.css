@@ -8,21 +8,68 @@
     background: #000;
     color: #fff;
     padding: 12px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     font-family: inherit;
     box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 
-/* When admin bar is visible */
-body.admin-bar .picklepower-spotify-bar {
-    top: 32px; /* Default WP admin bar height */
+/* Inner layout: label left, button right */
+.picklepower-spotify-bar__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
 }
 
-/* On mobile, admin bar is taller */
+/* Label styling */
+.picklepower-spotify-bar__label {
+    font-size: 14px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+/* Button styling */
+.picklepower-spotify-bar__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #1DB954; /* Spotify green */
+    color: #000;
+    font-weight: 600;
+    font-size: 14px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: transform 0.12s ease-out, box-shadow 0.12s ease-out, opacity 0.12s ease-out;
+}
+
+.picklepower-spotify-bar__button:hover,
+.picklepower-spotify-bar__button:focus {
+    opacity: 0.92;
+    transform: translateY(-1px);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+/* Admin bar offset */
+body.admin-bar .picklepower-spotify-bar {
+    top: 32px;
+}
+
 @media screen and (max-width: 782px) {
     body.admin-bar .picklepower-spotify-bar {
         top: 46px;
+    }
+
+    .picklepower-spotify-bar__inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .picklepower-spotify-bar__button {
+        width: 100%;
+        justify-content: center;
     }
 }
