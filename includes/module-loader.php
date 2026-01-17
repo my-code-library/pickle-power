@@ -13,7 +13,6 @@ class PJ_Module_Loader {
         $modules = [
             // Always-loaded modules
             'admin/admin-settings.php',
-       //     'auth/superfan-registration/superfan-registration.php',
             'auth/email-only-registration.php',
             'auth/email-only-auth.php',
             'auth/registration-email.php',
@@ -73,5 +72,6 @@ class PJ_Module_Loader {
 }
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
 
