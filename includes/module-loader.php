@@ -13,7 +13,7 @@ class PJ_Module_Loader {
         $modules = [
             // Always-loaded modules
             'admin/admin-settings.php',
-            'auth/superfan-registration/superfan-registration.php',
+       //     'auth/superfan-registration/superfan-registration.php',
             'auth/email-only-registration.php',
             'auth/email-only-auth.php',
             'auth/registration-email.php',
@@ -55,6 +55,10 @@ class PJ_Module_Loader {
             }
         }
 
+        // Superfan registration
+        if (get_option('pj_superfan_enabled')) {
+            require_once PICKLEPOWER_PLUGIN_DIR . 'modules/auth/superfan-registration/superfan-registration.php';
+        }
 
 
         // Loop through and load modules
@@ -69,4 +73,5 @@ class PJ_Module_Loader {
 }
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
