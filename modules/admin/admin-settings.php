@@ -252,6 +252,35 @@ class PJ_Settings_Page {
             'pj_spotify_section'   // 🔁 Same as above
         );
 
+         // SECTION: Super Fan Registration Enhancer
+        add_settings_section(
+            'pj_superfan_section',
+            'Super Fan Registration Enhancer',
+            function() {
+                echo '<p>Enable or disable the Super Fan registration enhancements.</p>';
+            },
+            'pj-settings'
+        );
+        
+        add_settings_field(
+            'pj_superfan_enabled',
+            'Enable Super Fan Enhancer',
+            function() {
+                $value = get_option('pj_superfan_enabled', 0);
+                ?>
+                <label>
+                    <input type="checkbox" name="pj_superfan_enabled" value="1" <?php checked(1, $value); ?> />
+                    Enable module
+                </label>
+                <?php
+            },
+            'pj-settings',
+            'pj_superfan_section'
+        );
+        
+        register_setting('pj_settings_group', 'pj_superfan_enabled');
+
+
         /* ------------------------------
          * SERVER-SIDE SAFETY NET
          * ------------------------------ */
