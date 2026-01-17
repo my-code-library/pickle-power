@@ -58,11 +58,10 @@ Modules live in `/modules` and are automatically loaded by the plugin bootstrap.
 A typical module structure:
 
 ```
-├── modules/
-│   ├── module-example/
-│   │   ├── assets/
-│   │   │   ├── css/
-│   │   │   └── js/
+modules/
+└── example-module/
+    ├── example-module.php
+    └── assets/
 ```
 
 ## 🛡️ Security & Best Practices
