@@ -56,9 +56,8 @@ class PJ_Module_Loader {
 
         // Superfan registration
         if (get_option('pj_superfan_enabled')) {
-            require_once PICKLEPOWER_PLUGIN_DIR . 'modules/auth/superfan-registration/superfan-registration.php';
+            $modules[] = 'modules/auth/superfan-registration/superfan-registration.php';
         }
-
 
         // Loop through and load modules
         foreach ($modules as $module) {
@@ -72,6 +71,7 @@ class PJ_Module_Loader {
 }
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
 
 
