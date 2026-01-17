@@ -60,9 +60,9 @@ A typical module structure:
 ```
 ├── modules/
 │   ├── module-example/
-│   ├── assets/
-│   │   ├── css/
-│   │   └── js/
+│   │   ├── assets/
+│   │   │   ├── css/
+│   │   │   └── js/
 ```
 
 ## 🛡️ Security & Best Practices
