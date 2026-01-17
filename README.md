@@ -25,7 +25,7 @@ Tailored for the needs of the Organic Pickle Juice brand — clean, branded, and
 ```
 pickle-power/
 ├── functions.php
-├── includes/
+├── includes/module-loader.php
 ├── modules/
 │   ├── admin/
 │   ├── auth/
@@ -59,9 +59,9 @@ A typical module structure:
 
 ```
 modules/
-└── example-module/
-    ├── example-module.php
-    └── assets/
+├── module-example/
+│   ├── assets/
+│   │   ├──css/
 ```
 
 ## 🛡️ Security & Best Practices
