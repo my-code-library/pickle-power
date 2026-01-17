@@ -54,7 +54,10 @@ class PJ_Module_Loader {
             }
         }
 
-
+        // Superfan registration
+        if (get_option('pj_superfan_enabled')) {
+            $modules[] = 'auth/superfan-registration/superfan-registration.php';
+        }
 
         // Loop through and load modules
         foreach ($modules as $module) {
@@ -68,3 +71,8 @@ class PJ_Module_Loader {
 }
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
+
+
+
+

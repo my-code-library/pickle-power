@@ -1,0 +1,32 @@
+.pickle-superfan-intro {
+    text-align: center;
+    margin-bottom: 25px;
+    padding: 20px 15px;
+    border-radius: 8px;
+    background: rgba(0, 255, 153, 0.08);
+}
+
+.pickle-superfan-title {
+    font-size: 26px;
+    color: #00ff99;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
+
+.pickle-superfan-tagline {
+    font-size: 15px;
+    color: #e0e0e0;
+    margin-bottom: 15px;
+}
+
+.pickle-superfan-benefits {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pickle-superfan-benefits li {
+    margin: 6px 0;
+    font-size: 14px;
+    color: #cfcfcf;
+}
