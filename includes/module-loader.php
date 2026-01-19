@@ -40,7 +40,7 @@ class PJ_Module_Loader {
 
         // Disable WordPress.org admin bar menu
         if ( get_option('pj_disable_wp_org_menu') ) {
-            $modules[] = 'admin/remove-wp-org-menu.php';
+            $modules[] = 'ui/remove-wp-org-menu.php';
         }
 
         //Enable Spotify release notification bar
@@ -71,6 +71,7 @@ class PJ_Module_Loader {
 }
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
 
 
