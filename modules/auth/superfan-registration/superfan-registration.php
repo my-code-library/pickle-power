@@ -56,7 +56,7 @@ class PicklePower_SuperFan_Registration {
 
         // Replace the button text "Register"
         if ($text === 'Register') {
-            return 'Join the Super Fan Club';
+            return 'Become a Super Fan';
         }
 
         return $translated;
