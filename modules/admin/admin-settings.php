@@ -227,8 +227,8 @@ class PJ_Settings_Page {
                 </label>
                 <?php
             },
-            'pj-settings',          // 🔁 Replace with your actual settings page slug if needed
-            'pj_spotify_section'   // 🔁 Replace with your existing section ID if needed
+            'pj-settings',          // 
+            'pj_spotify_section'   // 
         );
         
         // Text input: Spotify URL
@@ -248,8 +248,8 @@ class PJ_Settings_Page {
                 </p>
                 <?php
             },
-            'pj-settings',          // 🔁 Same as above
-            'pj_spotify_section'   // 🔁 Same as above
+            'pj-settings',          // 
+            'pj_spotify_section'   //
         );
 
          // SECTION: Super Fan Registration Enhancer
