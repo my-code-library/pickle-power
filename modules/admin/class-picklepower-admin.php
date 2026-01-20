@@ -17,7 +17,7 @@ class PicklePower_Admin {
 
         // Match your settings page slug exactly:
         // settings_page_{menu_slug}
-        if ( $hook !== 'settings_page_picklepower-settings' ) {
+        if ( $hook !== 'toplevel_page_pj-settings' ) {
             return;
         }
 
