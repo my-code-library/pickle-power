@@ -1,6 +1,6 @@
 # 🥒Pickle🔌Power
 
-## A Custom WordPress Plugin for OrganicPickleJuice.com
+## A Custom WordPress Plugin for [OrganicPickleJuice.com](https://organicpicklejuice.com)
 
 Pickle Juice is a modular, override‑safe WordPress plugin powering the custom functionality behind [organicpicklejuice.com](https://organicpicklejuice.com).
 
@@ -28,6 +28,8 @@ pickle-power/
 ├── includes/module-loader.php
 ├── modules/
 │   ├── admin/
+│   ├── ├── css/
+│       └── js/     
 │   ├── auth/
 │   ├── security/
 │   ├── spotify-bar/
