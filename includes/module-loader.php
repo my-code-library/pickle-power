@@ -67,10 +67,20 @@ class PJ_Module_Loader {
                 include_once $path;
             }
         }
+        
+        if ( is_admin() ) { 
+            $admin_class = $base_dir . 'admin/class-picklepower-admin.php'; 
+            if ( file_exists( $admin_class ) ) { 
+                require_once $admin_class; 
+                new PicklePower_Admin(); 
+            } 
+        }
+        
     }
 }
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
 
 

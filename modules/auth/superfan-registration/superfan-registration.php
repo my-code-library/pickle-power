@@ -21,7 +21,7 @@ class PicklePower_SuperFan_Registration {
     public function render_superfan_message() {
         ?>
         <div class="pickle-superfan-intro">
-            <h2 class="pickle-superfan-title">Join the Pickle Juice Super Fan Club</h2>
+            <h2 class="pickle-superfan-title">Become A Super Fan</h2>
             <p class="pickle-superfan-tagline">
                 Unlock early releases, exclusive drops, and behind‑the‑scenes access.
             </p>
@@ -56,7 +56,7 @@ class PicklePower_SuperFan_Registration {
 
         // Replace the button text "Register"
         if ($text === 'Register') {
-            return 'Join the Super Fan Club';
+            return 'Become a Super Fan';
         }
 
         return $translated;
