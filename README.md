@@ -28,7 +28,7 @@ pickle-power/
 ├── includes/module-loader.php
 ├── modules/
 │   ├── admin/
-│   ├── ├── css/
+│   └── ├── css/
 │       └── js/     
 │   ├── auth/
 │   ├── security/
