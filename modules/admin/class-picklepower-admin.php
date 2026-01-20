@@ -27,14 +27,14 @@ class PicklePower_Admin {
             'picklepower-admin',
             $base_url . 'assets/css/picklepower-admin.css',
             [],
-            PICKLEPOWER_VERSION
+            '1.0'
         );
 
         wp_enqueue_script(
             'picklepower-admin',
             $base_url . 'assets/js/picklepower-admin.js',
             [ 'jquery' ],
-            PICKLEPOWER_VERSION,
+            '1.0',
             true
         );
     }
