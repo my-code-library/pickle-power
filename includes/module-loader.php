@@ -49,19 +49,6 @@ class PJ_Module_Loader {
             $modules[] = 'spotify-bar/class-picklepower-spotify-bar.php';
         }
         
-        /**
-        $pj_enable_spotify_bar = get_option( 'pj_enable_spotify_bar', 0 );
-
-            if ( $pj_enable_spotify_bar ) {
-            $spotify_bar_module = $base_dir . 'spotify-bar/class-picklepower-spotify-bar.php';
-        
-            if ( file_exists( $spotify_bar_module ) ) {
-                require_once $spotify_bar_module;
-            }
-        }
-        *
-        */
-        
         // Superfan registration
         if (get_option('pj_superfan_enabled')) {
             $modules[] = 'auth/superfan-registration/superfan-registration.php';
@@ -88,6 +75,7 @@ class PJ_Module_Loader {
 }
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
 
 
