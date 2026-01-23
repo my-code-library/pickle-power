@@ -48,9 +48,8 @@ class PJ_Module_Loader {
         if( get_option( 'pj_enable_spotify_bar', 0 ) ) {
             $modules[] = 'spotify-bar/class-picklepower-spotify-bar.php';
         }
+        
         /**
-         *
-        //Enable Spotify release notification bar
         $pj_enable_spotify_bar = get_option( 'pj_enable_spotify_bar', 0 );
 
             if ( $pj_enable_spotify_bar ) {
@@ -89,6 +88,7 @@ class PJ_Module_Loader {
 }
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
 
 
 
