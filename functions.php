@@ -3,7 +3,7 @@
  * Plugin Name: Pickle Power
  * Description: Email only (no usernames) registration and login, Google & Microsoft analytics/webmaster tools, custom login logo, Cloudflare Turnstile support, magic login links, custom login url, Wordpress debranding, superfan registration enhancements
  * Author: Pickle Juice
- * Version: 1.0.6a
+ * Version: 1.0.7
  * Text Domain: pickle-juice
  * Domain Path: /languages
  */
@@ -42,6 +42,7 @@ add_filter('plugin_action_links_' . plugin_basename(__FILE__), function($links) 
 
 // Include the module loader
 require_once plugin_dir_path(__FILE__) . 'includes/module-loader.php';
+
 
 
 
