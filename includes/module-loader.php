@@ -43,17 +43,12 @@ class PJ_Module_Loader {
             $modules[] = 'ui/remove-wp-org-menu.php';
         }
 
-        //Enable Spotify release notification bar
-        $pj_enable_spotify_bar = get_option( 'pj_enable_spotify_bar', 0 );
 
-            if ( $pj_enable_spotify_bar ) {
-            $spotify_bar_module = $base_dir . 'spotify-bar/class-picklepower-spotify-bar.php';
-        
-            if ( file_exists( $spotify_bar_module ) ) {
-                require_once $spotify_bar_module;
-            }
+        //Enable Spotify Release Notification Bar v2
+        if( get_option( 'pj_enable_spotify_bar', 0 ) ) {
+            $modules[] = 'spotify-bar/class-picklepower-spotify-bar.php';
         }
-
+        
         // Superfan registration
         if (get_option('pj_superfan_enabled')) {
             $modules[] = 'auth/superfan-registration/superfan-registration.php';
@@ -80,6 +75,9 @@ class PJ_Module_Loader {
 }
 
 add_action('plugins_loaded', ['PJ_Module_Loader', 'load']);
+
+
+
 
 
 

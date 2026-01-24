@@ -30,6 +30,55 @@ add_action('login_enqueue_scripts', function() {
         body.login div#login {
             width: 375px;
         }
+        /* Pickle Power – Unified Auth Button Styling */
+        
+        /* LOGIN FORM BUTTON */
+        #loginform p.submit input[type="submit"],
+        /* REGISTER FORM BUTTON */
+        #registerform p.submit input[type="submit"],
+        /* LOST PASSWORD FORM BUTTON */
+        #lostpasswordform p.submit input[type="submit"] {
+            width: 100%;
+            padding: 14px 18px;
+            background: linear-gradient(135deg, #00d084, #00a86b);
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            box-sizing: border-box;
+        }
+        
+        /* HOVER */
+        #loginform p.submit input[type="submit"]:hover,
+        #registerform p.submit input[type="submit"]:hover,
+        #lostpasswordform p.submit input[type="submit"]:hover {
+            background: linear-gradient(135deg, #00e699, #00b97a);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.22);
+        }
+        
+        /* ACTIVE */
+        #loginform p.submit input[type="submit"]:active,
+        #registerform p.submit input[type="submit"]:active,
+        #lostpasswordform p.submit input[type="submit"]:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+        }
+        
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 480px) {
+            #loginform p.submit input[type="submit"],
+            #registerform p.submit input[type="submit"],
+            #lostpasswordform p.submit input[type="submit"] {
+                font-size: 15px;
+                padding: 12px 16px;
+                width: 100%;
+            }
+        }
     </style>';
 });
 

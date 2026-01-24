@@ -29,7 +29,7 @@ function pj_turnstile_render() {
 }
 
 add_action('login_form', 'pj_turnstile_render');
-add_action('register_form', 'pj_turnstile_render');
+add_action('register_form', 'pj_turnstile_render', 999);
 
 // 2. Validate Turnstile (shared)
 function pj_turnstile_validate($user) {
