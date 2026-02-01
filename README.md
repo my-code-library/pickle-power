@@ -29,7 +29,7 @@ pickle-power/
 ├── modules/
 │   ├── admin/
 │   └── ├── css/
-│       └── js/     
+│   │   └── js/     
 │   ├── auth/
 │   ├── security/
 │   ├── spotify-bar/
